@@ -449,9 +449,13 @@ components:
         walkSpeed: Walk Speed
       title: Deployment
     project:
+      admin: Admin
       cannotFetchFeeds: Cannot fetch feeds
-      feeds: Feeds
+      custom: Custom
+      feeds: Feed Sources
+      noAccess: No Access
       permissions: Permissions
+      title: Project Settings for
     rename: Rename
     save: Save
     title: Settings
