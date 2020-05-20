@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-The application consists of two repositories: a [Spark-powered Java backend](https://github.com/conveyal/datatools-server)
-and a [Javascript frontend written with React and Redux](https://github.com/conveyal/datatools-ui).
+The application consists of two repositories: a [Spark-powered Java backend](https://github.com/ibi-group/datatools-server)
+and a [Javascript frontend written with React and Redux](https://github.com/ibi-group/datatools-ui).
 To install and deploy the application, you will need Java 8, Maven, Node/npm,
 yarn, and [mastarm](https://github.com/conveyal/mastarm).
 
@@ -20,8 +20,8 @@ Two databases are required for the application:
 Clone the repo and change to the project directory:
 
 ```bash
-$ git clone https://github.com/conveyal/datatools-ui.git
-$ git clone https://github.com/conveyal/datatools-server.git
+$ git clone https://github.com/ibi-group/datatools-ui.git
+$ git clone https://github.com/ibi-group/datatools-server.git
 ```
 
 Copy the included configuration `env` templates for both the server and UI repos:
@@ -201,10 +201,7 @@ $ java -jar target/dt-v1.0.0.jar /path/to/env.yml /path/to/server.yml
 ```
 
 
-The application back-end should now be running at `http://localhost:9000` (or
-whatever port you specified in `server.yml`). The front-end assets are pointed
-to by the back end at whatever s3 bucket name is specified in `server.yml` at
-`application.assets_bucket`.
+The application back-end should now be running at `http://localhost:9000` (or whatever port you specified in `server.yml`). The front-end assets are obtained from the `dist` folder relative the url specified in `server.yml` at `application.client_assets_url`. While running a development server of datatools-ui, these assets are delivered to the client using budo, so the links defined in the backend `server.yml` are only used in a production setting.
 
 ## Configuring Modules
 
@@ -239,24 +236,13 @@ validation.
 - `OSM_VEX` - `datatools-server:env.yml` the validator requires the URL of a
 running instance of the [OSM vex server](https://github.com/conveyal/vanilla-extract).
 
-
-### Sign Configurations
-
-Enables the sign configuration module.
-
-#### List of configuration settings
-
-- `use_extension` - extension key to use for sign configuration
-- `url`
-- Requires `gtfsapi` module
-
 ### Alerts
 
 Enables the real-time alerts module.
 
 #### List of configuration settings
 
-- `use_extension` - extension key to use for sign configuration
+- `use_extension` - extension key to use for alerts
 - `url`
 - Requires `gtfsapi` module
 
